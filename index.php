@@ -1,6 +1,6 @@
 <?php
 
-$prova = $_GET["number"] ?? "";
+$prova = $_POST["number"] ?? "";
 
 function generatePassword($number)
 {
@@ -14,7 +14,7 @@ function generatePassword($number)
 
         $myArray[] = $chars[$x];
     }
-    return implode($myArray);
+    return implode($myArray); // array to string
 }
 ?>
 
@@ -33,7 +33,7 @@ function generatePassword($number)
 <body>
 
     <div class="container">
-        <form action="index.php" method="GET">
+        <form action="index.php" method="POST">
             <div class="mb-3">
                 <label for="number" class="form-label">Lunghezza Password</label>
                 <input type="number" class="form-control" name="number" id="number">
