@@ -1,3 +1,24 @@
+<?php
+
+$prova = $_GET["number"] ?? "";
+
+function generatePassword($number)
+{
+
+    $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890,.*+#%()[]{}';
+    $myArray = [];
+
+    for ($i = 0; $i < $number; $i++) {
+
+        $x = rand(0, strlen($chars) - 1);
+
+        $myArray[] = $chars[$x];
+    }
+    return implode($myArray);
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +36,7 @@
         <form action="index.php" method="GET">
             <div class="mb-3">
                 <label for="number" class="form-label">Lunghezza Password</label>
-                <input type="number" class="form-control" id="number">
+                <input type="number" class="form-control" name="number" id="number">
             </div>
 
             <button type="submit">Invia</button>
@@ -23,12 +44,10 @@
         </form>
 
         <?php
+            $password = generatePassword($prova);
 
-          $prova = $_GET["number"] ?? "";
-
-         ?> 
-
-    
+            echo $password;
+        ?>
 
     </div>
 
